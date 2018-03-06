@@ -214,9 +214,13 @@ define(["../../core/Helper",
 
 				var description = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'description';})[0]];
 				var shortDesc = '';
+				var phoneNumber = '';
+				var hours = '';
 
 				if(app.data.getWebAppData().getIsExternalData()){
 					shortDesc = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'short_desc';})[0]];
+					phoneNumber = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'phone';})[0]];
+					hours = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'hours';})[0]];
 					var desc1 = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'desc1';})[0]];
 					var desc2 = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'desc2';})[0]];
 					var desc3 = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'desc3';})[0]];
@@ -317,6 +321,19 @@ define(["../../core/Helper",
 					$(newSlide).find('.shortDesc').remove();
 				}
 
+				if(phoneNumber){
+					$(newSlide).find('.phoneNumber').html(phoneNumber);
+					$(newSlide).find('.phoneNumber').attr('href', 'tel:' + phoneNumber).html(phoneNumber);
+				}else{
+					$(newSlide).find('.phoneNumber').remove();
+				}
+
+				if(hours){
+					$(newSlide).find('.hours').html('Hours: ' + hours);
+				}else{
+					$(newSlide).find('.hours').remove();
+				}
+
 				if (description) {
 					$(newSlide).find('.description').html(description);
 				}
@@ -391,9 +408,13 @@ define(["../../core/Helper",
 
 					var description = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'description';})[0]];
 					var shortDesc = '';
+					var phoneNumber = '';
+					var hours;
 
 					if(app.data.getWebAppData().getIsExternalData()){
 						shortDesc = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'short_desc';})[0]];
+						phoneNumber = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'phone';})[0]];
+						hours = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'hours';})[0]];
 						var desc1 = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'desc1';})[0]];
 						var desc2 = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'desc2';})[0]];
 						var desc3 = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'desc3';})[0]];
@@ -486,6 +507,19 @@ define(["../../core/Helper",
 						$(newSlide).find('.shortDesc').html(shortDesc);
 					}else{
 						$(newSlide).find('.shortDesc').remove();
+					}
+
+					if(phoneNumber){
+						$(newSlide).find('.phoneNumber').html(phoneNumber);
+						$(newSlide).find('.phoneNumber').attr('href', 'tel:' + phoneNumber).html(phoneNumber);
+					}else{
+						$(newSlide).find('.phoneNumber').remove();
+					}
+
+					if(hours){
+						$(newSlide).find('.hours').html('Hours: ' + hours);
+					}else{
+						$(newSlide).find('.hours').remove();
 					}
 
 					if (description) {
